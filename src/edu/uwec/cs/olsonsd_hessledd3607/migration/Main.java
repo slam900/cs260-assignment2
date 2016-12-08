@@ -12,8 +12,8 @@ public class Main {
 		counties = new ArrayList<Integer>();
 		// Used to connect to database
 		String URL = "jdbc:oracle:thin:@dario.cs.uwec.edu:1521:csdev";
-		String username = "HESSLEDD3607";
-		String pass = "UU0GS14Y";
+		String username = "olsonsd";
+		String pass = "TJJ7Q8UY";
 		DAO dao = new DAO(URL, username, pass);
 
 		File file = new File("data.txt");

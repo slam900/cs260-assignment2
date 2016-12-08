@@ -86,7 +86,7 @@ public class DAO {
 	}
 	
 	public void insertWYFeature(String[] s) {
-		String query = "INSERT INTO WY_FEATURE VALUES (" + s[0] + ", '" + s[1] +"', '" + s[2] + "', LOCATION_SEQ.CURRVAL, '" + s[17] + "', '" +s[18] + "', '" + s[19] + "')";
+		String query = "INSERT INTO WY_FEATURE VALUES (" + s[0] + ", '" + s[1] +"', '" + s[2] + "', LOCATION_SEQ.CURRVAL, '" + s[17] + "', '" + convertDate(s[18]) + "', '" + convertDate(s[19]) + "')";
 	//	System.out.println(query);
 		try {
 			Statement statement = connection.createStatement();
@@ -98,5 +98,59 @@ public class DAO {
 			e.printStackTrace();
 		}
 	}
-
+	
+	private String convertDate(String date) {
+		String newDate = "";
+		if (!date.isEmpty()) {
+			String[] tokens = date.split("/");
+			int monthNum = Integer.valueOf(tokens[0]);
+			String day = tokens[1];
+			String year = tokens[2];
+			
+			String month;
+			switch (monthNum) {
+				case 1:
+					month = "JAN";
+					break;
+				case 2:
+					month = "FEB";
+					break;
+				case 3:
+					month = "MAR";
+					break;
+				case 4:
+					month = "APR";
+					break;
+				case 5:
+					month = "MAY";
+					break;
+				case 6:
+					month = "JUN";
+					break;
+				case 7:
+					month = "JUL";
+					break;
+				case 8:
+					month = "AUG";
+					break;
+				case 9:
+					month = "SEP";
+					break;
+				case 10:
+					month = "OCT";
+					break;
+				case 11:
+					month = "NOV";
+					break;
+				case 12:
+					month = "DEC";
+					break;
+				default:
+					month = "Invalid month";
+					break;
+			}
+			newDate = day + "-" + month + "-" + year;
+		}
+		return newDate;
+	}
 }
