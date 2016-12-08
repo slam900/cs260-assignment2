@@ -1,7 +1,6 @@
 package edu.uwec.cs.olsonsd_hessledd3607.migration;
 
 import java.sql.*;
-import java.util.*;
 
 public class DAO {
 	private static Connection connection;
@@ -16,29 +15,88 @@ public class DAO {
 		}
 	}
 
-//	public List<Author> getAuthorData() {
-//		List<Author> authors = new ArrayList<Author>();
-//
-//		// Eliminate authors with no books
-//		String query = "SELECT * FROM henry_author a\n"
-//				+ "WHERE author_num IN (\n"
-//				+ "SELECT author_num FROM henry_wrote)\n"
-//				+ "ORDER BY author_last";
-//		try {
-//			Statement statement = connection.createStatement();
-//			ResultSet results = statement.executeQuery(query);
-//
-//			while (results.next()) {
-//				int authorNumber = results.getInt("author_num");
-//				String lastName = results.getString("author_last");
-//				String firstName = results.getString("author_first");
-//				authors.add(new Author(authorNumber, lastName, firstName));
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return authors;
-//	}
+	public void insertWYState(String[] s) {
+		String query = "INSERT INTO WY_STATE VALUES (" + s[4] + ", " + "'" + s[3] + "'" + ")";
+	//	System.out.println(query);
+		try {
+			Statement statement = connection.createStatement();
+			int results = statement.executeUpdate(query);
 
+	//		System.out.println(results);
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void insertWYCounty(String[] s) {
+		String query = "INSERT INTO WY_COUNTY VALUES (" + s[6] + ", '" + s[5] + "', " +s[4] + ")";
+	//	System.out.println(query);
+		try {
+			Statement statement = connection.createStatement();
+			int results = statement.executeUpdate(query);
+
+		//	System.out.println(results);
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void insertWYPrimary(String[] s) {
+		String query = "INSERT INTO WY_PRIMARY VALUES (PRIMARY_SEQ.NEXTVAL, '" + s[7] + "', '" + s[8] + "', '" +s[9] + "', '" + s[10] + "')";
+	//	System.out.println(query);
+		try {
+			Statement statement = connection.createStatement();
+			int results = statement.executeUpdate(query);
+
+	//		System.out.println(results);
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void insertWYSource(String[] s) {
+		String query = "INSERT INTO WY_SOURCE VALUES (SOURCE_SEQ.NEXTVAL, '" + s[11] + "', '" + s[12] + "', '" +s[13] + "', '" + s[14] + "')";
+	//	System.out.println(query);
+		try {
+			Statement statement = connection.createStatement();
+			int results = statement.executeUpdate(query);
+
+	//		System.out.println(results);
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void insertWYLocation(String[] s) {
+		String query = "INSERT INTO WY_LOCATION VALUES (LOCATION_SEQ.NEXTVAL, " + s[6] +", PRIMARY_SEQ.CURRVAL, SOURCE_SEQ.CURRVAL, " +s[15] + ", " + s[16] + ")";
+	//	System.out.println(query);
+		try {
+			Statement statement = connection.createStatement();
+			int results = statement.executeUpdate(query);
+
+	//		System.out.println(results);
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void insertWYFeature(String[] s) {
+		String query = "INSERT INTO WY_FEATURE VALUES (" + s[0] + ", '" + s[1] +"', '" + s[2] + "', LOCATION_SEQ.CURRVAL, '" + s[17] + "', '" +s[18] + "', '" + s[19] + "')";
+	//	System.out.println(query);
+		try {
+			Statement statement = connection.createStatement();
+			int results = statement.executeUpdate(query);
+
+	//		System.out.println(results);
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
