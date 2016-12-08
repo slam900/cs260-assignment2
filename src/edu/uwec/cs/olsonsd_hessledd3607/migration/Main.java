@@ -4,12 +4,12 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-	private static ArrayList<Integer> states;
-	private static ArrayList<Integer> counties;
+	private static List<Integer> states;
+	private static List<County> counties;
 
 	public static void main(String[] args) throws FileNotFoundException, NumberFormatException {
 		states = new ArrayList<Integer>();
-		counties = new ArrayList<Integer>();
+		counties = new ArrayList<County>();
 		// Used to connect to database
 		String URL = "jdbc:oracle:thin:@dario.cs.uwec.edu:1521:csdev";
 		String username = "olsonsd";
@@ -17,6 +17,7 @@ public class Main {
 		DAO dao = new DAO(URL, username, pass);
 
 		File file = new File("data.txt");
+//		File file = new File("data2.txt");
 		Scanner input = new Scanner(file);
 		ArrayList<String[]> list = new ArrayList<String[]>();
 
@@ -36,6 +37,7 @@ public class Main {
 
 		
 		for (int i = 0; i < list.size(); ++i) {
+//		for (int i = 0; i < 200; ++i) {
 			// System.out.println(Arrays.toString(list.get(i)));
 			insertEntry(list.get(i), dao);
 			
@@ -56,11 +58,11 @@ public class Main {
 		//System.out.println(entry[6]);
 		//System.out.println(entry[6].length());
 		
-		Integer county;
+		County county;
 		if (!entry[6].isEmpty())
-			county = Integer.valueOf(entry[6]);
+			county = new County(Integer.valueOf(entry[6]), state);
 		else {
-			county = new Integer(0);
+			county = new County(0, state);
 			entry[6] = "0";
 		}
 		

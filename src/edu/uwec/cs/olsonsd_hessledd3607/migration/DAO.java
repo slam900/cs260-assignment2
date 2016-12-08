@@ -82,7 +82,16 @@ public class DAO {
 	}
 	
 	public void insertWYLocation(String[] s) {
-		String query = "INSERT INTO WY_LOCATION VALUES (LOCATION_SEQ.NEXTVAL, " + s[6] +", PRIMARY_SEQ.CURRVAL, SOURCE_SEQ.CURRVAL, " +s[15] + ", " + s[16] + ")";
+		String query =
+				"INSERT INTO WY_LOCATION VALUES ("
+				+ "LOCATION_SEQ.NEXTVAL"
+				+ ", " + s[6]
+				+ ", " + s[4]
+				+ ", PRIMARY_SEQ.CURRVAL"
+				+ ", SOURCE_SEQ.CURRVAL"
+				+ ", " + s[15]
+				+ ", " + s[16]
+				+ ")";
 	//	System.out.println(query);
 		try {
 			Statement statement = connection.createStatement();
