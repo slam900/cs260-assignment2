@@ -28,6 +28,7 @@ public class Main {
 			String[] entry = line.split("\\|", 20);
 			list.add(entry);
 		}
+		input.close();
 
 		// Check states list
 		// for (int i = 0; i < states.size(); ++i)
@@ -37,10 +38,13 @@ public class Main {
 		for (int i = 0; i < list.size(); ++i) {
 			// System.out.println(Arrays.toString(list.get(i)));
 			insertEntry(list.get(i), dao);
+			
+			// Loading bar
 			if (i % 100 == 0)
 				System.out.println(i);
 		}
-
+		// Is auto-commit on?
+//		dao.commit();
 	}
 
 	public static void insertEntry(String[] entry, DAO dao) {

@@ -7,10 +7,20 @@ public class DAO {
 
 	public DAO(String URL, String user, String pass) {
 		connection = null;
-
+		
 		try {
 			connection = DriverManager.getConnection(URL, user, pass);
+//			connection.setAutoCommit(false);
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void commit() {
+		try {
+			connection.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
