@@ -16,7 +16,7 @@ public class Main {
 		String pass = "UU0GS14Y";
 		DAO dao = new DAO(URL, username, pass);
 
-		File file = new File("data2.txt");
+		File file = new File("data.txt");
 		Scanner input = new Scanner(file);
 		ArrayList<String[]> list = new ArrayList<String[]>();
 
@@ -37,7 +37,7 @@ public class Main {
 		for (int i = 0; i < list.size(); ++i) {
 			// System.out.println(Arrays.toString(list.get(i)));
 			insertEntry(list.get(i), dao);
-			//if (i % 100 == 0)
+			if (i % 100 == 0)
 				System.out.println(i);
 		}
 
@@ -49,14 +49,16 @@ public class Main {
 			states.add(state);
 			dao.insertWYState(entry);
 		}
-		System.out.println(entry[6]);
-		System.out.println(entry[6].length());
+		//System.out.println(entry[6]);
+		//System.out.println(entry[6].length());
 		
 		Integer county;
 		if (!entry[6].isEmpty())
 			county = Integer.valueOf(entry[6]);
-		else
-			county = null;
+		else {
+			county = new Integer(0);
+			entry[6] = "0";
+		}
 		
 		if (!counties.contains(county)) {
 			counties.add(county);
