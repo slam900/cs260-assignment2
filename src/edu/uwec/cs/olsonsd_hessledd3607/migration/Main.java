@@ -10,6 +10,7 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException, NumberFormatException {
 		states = new ArrayList<Integer>();
 		counties = new ArrayList<County>();
+		
 		// Used to connect to database
 		String URL = "jdbc:oracle:thin:@dario.cs.uwec.edu:1521:csdev";
 		String username = "olsonsd";
@@ -17,11 +18,10 @@ public class Main {
 		DAO dao = new DAO(URL, username, pass);
 
 		File file = new File("data.txt");
-//		File file = new File("data2.txt");
 		Scanner input = new Scanner(file);
 		ArrayList<String[]> list = new ArrayList<String[]>();
 
-		// Parse File
+		// Parse file
 		input.nextLine();
 		while (input.hasNextLine()) {
 			String line = input.nextLine();
@@ -31,19 +31,12 @@ public class Main {
 		}
 		input.close();
 
-		// Check states list
-		// for (int i = 0; i < states.size(); ++i)
-		// System.out.println(states.get(i));
-
-		
 		for (int i = 0; i < list.size(); ++i) {
-//		for (int i = 0; i < 200; ++i) {
-			// System.out.println(Arrays.toString(list.get(i)));
 			insertEntry(list.get(i), dao);
 			
 			// Loading bar
-			if (i % 100 == 0)
-				System.out.println(i);
+//			if (i % 100 == 0)
+//				System.out.println(i);
 		}
 		// Is auto-commit on?
 //		dao.commit();
@@ -55,8 +48,6 @@ public class Main {
 			states.add(state);
 			dao.insertWYState(entry);
 		}
-		//System.out.println(entry[6]);
-		//System.out.println(entry[6].length());
 		
 		County county;
 		if (!entry[6].isEmpty())

@@ -20,19 +20,19 @@ public class DAO {
 		try {
 			connection.commit();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	public void insertWYState(String[] s) {
-		String query = "INSERT INTO WY_STATE VALUES (" + s[4] + ", " + "'" + s[3] + "'" + ")";
-	//	System.out.println(query);
+		String query = "INSERT INTO WY_STATE VALUES ("
+						+ s[4]
+						+ ", " + "'" + s[3] + "'"
+						+ ")";
+
 		try {
 			Statement statement = connection.createStatement();
-			int results = statement.executeUpdate(query);
-
-	//		System.out.println(results);
+			statement.executeUpdate(query);
 			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -40,13 +40,15 @@ public class DAO {
 	}
 	
 	public void insertWYCounty(String[] s) {
-		String query = "INSERT INTO WY_COUNTY VALUES (" + s[6] + ", '" + s[5] + "', " +s[4] + ")";
-	//	System.out.println(query);
+		String query = "INSERT INTO WY_COUNTY VALUES ("
+						+ s[6]
+						+ ", '" + s[5] + "'"
+						+ ", " + s[4]
+						+ ")";
+		
 		try {
 			Statement statement = connection.createStatement();
-			int results = statement.executeUpdate(query);
-
-		//	System.out.println(results);
+			statement.executeUpdate(query);
 			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -54,13 +56,17 @@ public class DAO {
 	}
 	
 	public void insertWYPrimary(String[] s) {
-		String query = "INSERT INTO WY_PRIMARY VALUES (PRIMARY_SEQ.NEXTVAL, '" + s[7] + "', '" + s[8] + "', '" +s[9] + "', '" + s[10] + "')";
-	//	System.out.println(query);
+		String query = "INSERT INTO WY_PRIMARY VALUES ("
+						+ "PRIMARY_SEQ.NEXTVAL"
+						+ ", '" + s[7] + "'"
+						+ ", '" + s[8] + "'"
+						+ ", '" + s[9] + "'"
+						+ ", '" + s[10] + "'"
+						+ ")";
+		
 		try {
 			Statement statement = connection.createStatement();
-			int results = statement.executeUpdate(query);
-
-	//		System.out.println(results);
+			statement.executeUpdate(query);
 			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -68,13 +74,17 @@ public class DAO {
 	}
 	
 	public void insertWYSource(String[] s) {
-		String query = "INSERT INTO WY_SOURCE VALUES (SOURCE_SEQ.NEXTVAL, '" + s[11] + "', '" + s[12] + "', '" +s[13] + "', '" + s[14] + "')";
-	//	System.out.println(query);
+		String query = "INSERT INTO WY_SOURCE VALUES ("
+						+ "SOURCE_SEQ.NEXTVAL"
+						+ ", '" + s[11] + "'"
+						+ ", '" + s[12] + "'"
+						+ ", '" + s[13] + "'"
+						+ ", '" + s[14] + "'"
+						+ ")";
+		
 		try {
 			Statement statement = connection.createStatement();
-			int results = statement.executeUpdate(query);
-
-	//		System.out.println(results);
+			statement.executeUpdate(query);
 			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -92,12 +102,10 @@ public class DAO {
 				+ ", " + s[15]
 				+ ", " + s[16]
 				+ ")";
-	//	System.out.println(query);
+		
 		try {
 			Statement statement = connection.createStatement();
-			int results = statement.executeUpdate(query);
-
-	//		System.out.println(results);
+			statement.executeUpdate(query);
 			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -106,12 +114,10 @@ public class DAO {
 	
 	public void insertWYFeature(String[] s) {
 		String query = "INSERT INTO WY_FEATURE VALUES (" + s[0] + ", '" + s[1] +"', '" + s[2] + "', LOCATION_SEQ.CURRVAL, '" + s[17] + "', '" + convertDate(s[18]) + "', '" + convertDate(s[19]) + "')";
-	//	System.out.println(query);
+		
 		try {
 			Statement statement = connection.createStatement();
-			int results = statement.executeUpdate(query);
-
-	//		System.out.println(results);
+			statement.executeUpdate(query);
 			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
